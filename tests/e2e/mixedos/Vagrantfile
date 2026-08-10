@@ -123,7 +123,7 @@ end
 Vagrant.configure("2") do |config|
   config.vagrant.plugins = ["vagrant-rke2", "vagrant-reload"]
   # For windows, just use the password not the private key
-  config.ssh.password    = "vagrant"
+  # config.ssh.password    = "vagrant"
   # Default provider is libvirt, virtualbox is only provided as a backup
   config.vm.provider "libvirt" do |v|
     v.cpus = NODE_CPUS
