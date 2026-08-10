@@ -43,7 +43,7 @@ def provision(vm, role, role_num, node_num)
     elsif !RELEASE_VERSION.empty?
       install_type = "-Commit #{RELEASE_VERSION}"
     else
-      vm.provision "shell", path: "../scripts/latest_commit.ps1", args: [GITHUB_BRANCH, "./rke2_commits.txt"]
+      vm.provision "shell", path: "../scripts/latest_commit.ps1", args: [GITHUB_BRANCH, "./rke2_commits.txt", ENV["GITHUB_TOKEN"]]
       install_type = "-Commit (Get-Content -TotalCount 1 ./rke2_commits.txt)"
     end
   else
