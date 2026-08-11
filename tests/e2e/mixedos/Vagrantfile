@@ -35,7 +35,7 @@ def provision(vm, role, role_num, node_num)
     vm.provision "Configure RemoteAccess",
       type: "shell",
       path: "../scripts/install-bgp-1.ps1"
-    config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+    vm.synced_folder ".", "/vagrant", disabled: true
     if RELEASE_VERSION == "skip"
       install_type = "-ArtifactPath 'C:\tmp'" 
     elsif !RELEASE_VERSION.empty? && RELEASE_VERSION.start_with?("v1")
