@@ -29,6 +29,10 @@ def provision(vm, role, role_num, node_num)
   defaultOSConfigure(vm)
  
   if role.include?("windows")
+    vm.provider "libvirt" do |v|
+      v.cpus = 4
+      v.memory = 6144
+    end
     vm.provision "shell", path: "../scripts/install-bgp.ps1"
     vm.provision "Reboot Windows",
       type: "reload"
