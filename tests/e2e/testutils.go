@@ -633,7 +633,7 @@ func (v VagrantNode) runCmdOnWindowsNode(cmd string) (string, error) {
 
 // RunCommand execute a command on the host
 func RunCommand(cmd string) (string, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Minute*15)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute*60)
 	defer cancel()
 	c := exec.CommandContext(ctx, "bash", "-c", cmd)
 	out, err := c.CombinedOutput()
