@@ -166,7 +166,7 @@ func (f *Flannel) initializeConfig(ctx context.Context, nodeConfig *daemonconfig
 			Name:           "flannel",
 			OverlayNetName: "flannel.4096",
 			Hostname:       nodeConfig.AgentConfig.NodeName,
-			ConfigPath:     filepath.Join("c:\\", dataDir, "agent"),
+			ConfigPath:     filepath.Join(EnsureDrive(dataDir), "agent"),
 			OverlayEncap:   "vxlan",
 			VxlanVNI:       "4096",
 			VxlanPort:      "4789",

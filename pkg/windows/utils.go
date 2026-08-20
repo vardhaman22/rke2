@@ -11,6 +11,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"text/template"
@@ -367,4 +368,12 @@ func findInterface(ip string) (string, error) {
 	}
 
 	return "", fmt.Errorf("no interface has the ip: %s", ip)
+}
+
+func EnsureDrive(path string) string {
+	if filepath.VolumeName(path) != "" {
+		return path
+	}
+
+	return filepath.Join("c:\\", path)
 }
